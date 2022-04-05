@@ -1,7 +1,14 @@
 # frozen_string_literal: true
+
+require "rails"
+require "active_job"
+require "active_job/queue_adapters"
+
 module GoodJob
   # Ruby on Rails integration.
-  class Railtie < ::Rails::Railtie
+  class Engine < ::Rails::Engine
+    isolate_namespace GoodJob
+
     config.good_job = ActiveSupport::OrderedOptions.new
     config.good_job.cron = {}
 

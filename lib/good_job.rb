@@ -1,7 +1,4 @@
 # frozen_string_literal: true
-require "rails"
-require "active_job"
-require "active_job/queue_adapters"
 
 require "zeitwerk"
 Zeitwerk::Loader.for_gem.tap do |loader|
@@ -12,7 +9,8 @@ Zeitwerk::Loader.for_gem.tap do |loader|
   loader.setup
 end
 
-require "good_job/railtie"
+require "good_job/version"
+require "good_job/engine"
 
 # GoodJob is a multithreaded, Postgres-based, ActiveJob backend for Ruby on Rails.
 #

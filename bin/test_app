@@ -1,4 +1,15 @@
 #!/usr/bin/env ruby
-APP_PATH = File.expand_path('../spec/test_app/config/application', __dir__)
-require_relative '../spec/test_app/config/boot'
-require 'rails/commands'
+#
+# Note: this command cannot be named "rails" because it will break generator specs with the message:
+# "Can't initialize a new Rails application within the directory of another, please change to a non-Rails directory first."
+
+ENGINE_ROOT = File.expand_path("..", __dir__)
+ENGINE_PATH = File.expand_path("../lib/good_job/engine", __dir__)
+APP_PATH = File.expand_path("../spec/test_app/config/application", __dir__)
+
+# Set up gems listed in the Gemfile.
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+require "bundler/setup" if File.exist?(ENV["BUNDLE_GEMFILE"])
+
+require "rails/all"
+require "rails/engine/commands"

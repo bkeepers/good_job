@@ -1,2 +1,2 @@
-release: bin/test_app_rake heroku:release
+release: bin/test_app heroku:release
 web: bin/test_app server
