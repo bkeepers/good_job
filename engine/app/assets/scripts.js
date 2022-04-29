@@ -17,6 +17,7 @@ const GoodJob = {
     GoodJob.addListeners();
     GoodJob.pollUpdates();
     GoodJob.renderCharts(true);
+    GoodJob.setupPopovers();
   },
 
   addListeners: () => {
@@ -127,6 +128,13 @@ const GoodJob = {
 
   setStorage: (key, value) => {
     localStorage.setItem('good_job-' + key, value);
+  },
+
+  setupPopovers() {
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    popoverTriggerList.forEach((el) => {
+      new bootstrap.Popover(el, { html: true })
+    })
   }
 };
 
