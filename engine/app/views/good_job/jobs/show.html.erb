@@ -4,15 +4,15 @@
       <div class="flex-fill">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb small mb-0">
-            <li class="breadcrumb-item"><%= link_to "Jobs", jobs_path %></li>
+            <li class="breadcrumb-item"><%= link_to t('good_job.jobs'), jobs_path %></li>
             <li class="breadcrumb-item active" aria-current="page">ActiveJob ID: <%= tag.code @job.id %></li>
           </ol>
         </nav>
         <h2 class="mb-1"><%= tag.code @job.job_class %></h2>
         <div class="text-muted small d-flex gap-2">
-            <div>Queue: <%= tag.strong @job.queue_name %></div>
+            <div><%= t 'good_job.queue' %>: <%= tag.strong @job.queue_name %></div>
             •
-            <div>Priority: <%= tag.strong @job.priority %></div>
+            <div><%= t 'good_job.priority' %>: <%= tag.strong @job.priority %></div>
         </div>
       </div>
       <div>
@@ -44,7 +44,7 @@
 </div>
 
 <div class="my-4">
-  <h5>Arguments</h5>
+  <h5><%= t 'arguments', scope: 'good_job' %></h5>
   <%= tag.pre @job.serialized_params["arguments"].map(&:inspect).join(', ') %>
 </div>
 

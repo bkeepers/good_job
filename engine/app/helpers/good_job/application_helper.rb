@@ -4,16 +4,18 @@ module GoodJob
     def format_duration(sec)
       return unless sec
 
-      if sec < 1
-        t('duration.milliseconds', ms: sec * 1000)
-      elsif sec < 10
-        t('duration.less_than_10_seconds', sec: sec)
-      elsif sec < 60
-        t('duration.seconds', sec: sec)
-      elsif sec < 3600
-        t('duration.minutes', min: sec / 60, sec: sec % 60)
-      else
-        t('duration.hours', hour: sec / 3600, min: (sec % 3600) / 60)
+      with_options scope: 'good_job.duration' do |locale|
+        if sec < 1
+          locale.t('milliseconds', ms: sec * 1000)
+        elsif sec < 10
+          locale.t('less_than_10_seconds', sec: sec)
+        elsif sec < 60
+          locale.t('seconds', sec: sec)
+        elsif sec < 3600
+          locale.t('minutes', min: sec / 60, sec: sec % 60)
+        else
+          locale.t('hours', hour: sec / 3600, min: (sec % 3600) / 60)
+        end
       end
     end
 
@@ -41,7 +43,7 @@ module GoodJob
     }.freeze
 
     def status_badge(status)
-      content_tag :span, status_icon(status, class: "text-white") + t(status, scope: '.status'),
+      content_tag :span, status_icon(status, class: "text-white") + t(status, scope: 'good_job.status'),
                   class: "badge rounded-pill bg-#{STATUS_COLOR.fetch(status)} d-inline-flex gap-2 ps-1 pe-3 align-items-center"
     end
 

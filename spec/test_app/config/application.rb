@@ -21,5 +21,6 @@ module TestApp
     config.log_level = :debug
 
     config.action_controller.include_all_helpers = false
+    config.action_view.raise_on_missing_translations = true
   end
 end

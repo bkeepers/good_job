@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light border-bottom bg-white sticky-top shadow-sm">
   <div class="container-fluid">
-    <%= link_to t(".name"), root_path, class: "navbar-brand mb-0 h1" %>
+    <%= link_to t("good_job.name"), root_path, class: "navbar-brand mb-0 h1" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,19 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to t(".jobs"), jobs_path, class: ["nav-link", ("active" if controller_name == 'jobs')] %>
+          <%= link_to t("good_job.jobs"), jobs_path, class: ["nav-link", ("active" if controller_name == 'jobs')] %>
         </li>
         <li class="nav-item">
-          <%= link_to t(".cron_schedules"), cron_entries_path, class: ["nav-link", ("active" if controller_name == 'cron_entries')] %>
+          <%= link_to t("good_job.cron_schedules"), cron_entries_path, class: ["nav-link", ("active" if controller_name == 'cron_entries')] %>
         </li>
         <li class="nav-item">
-          <%= link_to t(".processes"), processes_path, class: ["nav-link", ("active" if controller_name == 'processes')] %>
+          <%= link_to t("good_job.processes"), processes_path, class: ["nav-link", ("active" if controller_name == 'processes')] %>
         </li>
       </ul>
       <div class="nav-item pe-2">
         <label>
           <%= check_box_tag "live_poll", params.fetch("poll", 30), params[:poll].present? %>
-          <%= t(".live_poll") %>
+          <%= t("good_job.live_poll") %>
         </label>
       </div>
       <ul class="navbar-nav">
